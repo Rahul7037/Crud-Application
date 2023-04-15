@@ -4,6 +4,7 @@ const User = require('./models/user');
 
 // express app
 const app = express();
+const port = process.env.PORT || 3001;
 
 // connect to mongodb & listen for requests
 // const dbURI = "mongodb://0.0.0.0:27017/CRUD";
@@ -145,7 +146,7 @@ app.use((req,res)=>{
 })
 
 
-
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 
 
