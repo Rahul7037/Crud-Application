@@ -6,12 +6,22 @@ const User = require('./models/user');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = "mongodb://0.0.0.0:27017/CRUD";
+// const dbURI = "mongodb://0.0.0.0:27017/CRUD";
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) //this return promise
-  .then((result) =>{ console.log("Database-connected"); app.listen(8080)})
-  //after db connected than it will listen to port3000
-  .catch(err => console.log(err)); //else errors will be shown
+// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }) //this return promise
+//   .then((result) =>{ console.log("Database-connected"); app.listen(8080)})
+//   //after db connected than it will listen to port3000
+//   .catch(err => console.log(err)); //else errors will be shown
+// const mongoose = require('mongoose');
+
+// mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
+
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Database connected!'))
+.catch(err => console.error(err));
 
 
 // register view engine
